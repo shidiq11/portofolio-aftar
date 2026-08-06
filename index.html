@@ -1,296 +1,503 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - Afthar Afrizy | TKJ Expert</title>
-    <!-- Tailwind CSS untuk styling modern -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- FontAwesome untuk ikon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Animate.css untuk animasi tambahan -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Bilal Fakhri Athallah - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#f8fafc',
+                            surface: 'rgba(255, 255, 255, 0.65)',
+                            border: 'rgba(255, 255, 255, 0.8)',
+                            silver: '#e2e8f0',
+                            dark: '#0f172a',
+                            muted: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
-        
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
+            background-color: #f1f5f9;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(226, 232, 240, 0.8) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(203, 213, 225, 0.5) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #0f172a;
         }
 
-        /* Latar Belakang Alam dengan Overlay Hijau Transparan */
-        .nature-bg {
-            background: linear-gradient(rgba(20, 83, 45, 0.75), rgba(6, 78, 59, 0.85)), 
-                        url('https://images.unsplash.com/photo-1511497584788-876761142212?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-            background-size: cover;
+        /* Glassmorphism Styling */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
         }
 
-        /* Border Alam pada Foto Profil */
-        .nature-border {
-            border: 6px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 25px rgba(34, 197, 94, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
-            position: relative;
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
         }
 
-        /* Efek Transparansi Glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.45);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Animasi Scroll Custom */
-        .scroll-hidden {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.75);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+            border-color: rgba(255, 255, 255, 0.9);
         }
 
-        .scroll-visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* Circular Progress Styling */
+        .circle-bg {
+            fill: none;
+            stroke: #e2e8f0;
+            stroke-width: 3.8;
+        }
+        .circle-progress {
+            fill: none;
+            stroke-width: 3.8;
+            stroke-linecap: round;
+            stroke: #0f172a;
+            transition: stroke-dasharray 1s ease-in-out;
         }
 
-        /* Efek Klik Interaktif pada Informasi */
-        .click-pop:active {
-            transform: scale(0.95);
-            transition: transform 0.1s ease;
+        /* Animation Fade-In */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        /* Animasi Daun Jatuh Dekoratif */
-        @keyframes floatLeaf {
-            0% { transform: translateY(-10px) rotate(0deg); }
-            50% { transform: translateY(15px) rotate(180deg); }
-            100% { transform: translateY(-10px) rotate(360deg); }
-        }
-        .leaf-float {
-            animation: floatLeaf 6s ease-in-out infinite;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
-<body class="nature-bg text-white min-h-screen">
+<body class="font-sans antialiased selection:bg-slate-900 selection:text-white">
 
-    <!-- Elemen Alam Dekoratif (Daun/Partikel Melayang) -->
-    <div class="fixed top-10 left-10 text-emerald-300/30 text-4xl leaf-float pointer-events-none z-0"><i class="fa-solid fa-leaf"></i></div>
-    <div class="fixed bottom-20 right-12 text-emerald-200/25 text-5xl leaf-float pointer-events-none z-0" style="animation-delay: 2s;"><i class="fa-solid fa-seedling"></i></div>
-    <div class="fixed top-1/2 right-10 text-emerald-400/20 text-3xl leaf-float pointer-events-none z-0" style="animation-delay: 4s;"><i class="fa-solid fa-tree"></i></div>
-
-    <div class="container mx-auto px-6 py-12 relative z-10 max-w-5xl">
-
-        <!-- HEADER / PERKENALAN UTAMA -->
-        <header class="text-center mb-16 scroll-hidden" data-scroll>
-            <div class="relative inline-block mb-6 group">
-                <!-- Foto Profil dengan Border Alam -->
-                <img id="profile-pic" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" 
-                     alt="Afthar Afrizy" class="w-44 h-44 rounded-full object-cover nature-border mx-auto transition-transform duration-500 group-hover:scale-105">
-                
-                <!-- Tombol Mengganti Foto -->
-                <button onclick="changePhoto()" class="absolute bottom-2 right-2 bg-emerald-600 hover:bg-emerald-500 text-white p-3 rounded-full shadow-lg transition-transform hover:scale-110 click-pop cursor-pointer" title="Ganti Foto">
-                    <i class="fa-solid fa-camera"></i>
-                </button>
-            </div>
-
-            <h1 class="text-4xl md:text-5xl font-bold tracking-wide text-white drop-shadow-md">Afthar Afrizy</h1>
-            <p class="text-emerald-200 font-semibold text-lg mt-2 tracking-wider">Teknik Komputer & Jaringan (TKJ) Specialist</p>
-            
-            <!-- Deskripsi Singkat Perkenalan Diri TKJ -->
-            <div class="glass-card max-w-2xl mx-auto mt-6 p-6 rounded-2xl shadow-xl text-emerald-50 text-sm md:text-base leading-relaxed">
-                Halo! Saya adalah seorang ahli Teknik Komputer dan Jaringan (TKJ) yang berdedikasi tinggi dalam merancang, mengonfigurasi, serta mengamankan infrastruktur jaringan komputer. Memiliki pemahaman mendalam tentang administrasi server, troubleshooting hardware & software, mikrotik, hingga manajemen data profesional menggunakan Microsoft Word dan Excel.
-            </div>
-        </header>
-
-        <!-- MEDIA SOSIAL & KONTAK INTERAKTIF -->
-        <section class="mb-16 scroll-hidden" data-scroll>
-            <h2 class="text-2xl font-bold text-center mb-6 text-emerald-100"><i class="fa-solid fa-share-nodes mr-2"></i>Hubungi & Media Sosial</h2>
-<div class="flex flex-wrap justify-center gap-4">
-                <!-- WhatsApp -->
-                <a href="https://wa.me/62887433410208" target="_blank" onclick="trackClick('WhatsApp')" 
-                   class="glass-card px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-emerald-600/40 transition-all duration-300 hover:scale-105 click-pop shadow-lg border border-emerald-400/30">
-                    <i class="fa-brands fa-whatsapp text-2xl text-emerald-300"></i>
-                    <span class="font-medium">WhatsApp</span>
-                </a>
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/afrizyy?igsh=Z25pcDhvNHBvNzZ0" target="_blank" onclick="trackClick('Instagram')" 
-                   class="glass-card px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-pink-600/40 transition-all duration-300 hover:scale-105 click-pop shadow-lg border border-pink-400/30">
-                    <i class="fa-brands fa-instagram text-2xl text-pink-300"></i>
-                    <span class="font-medium">Instagram</span>
-                </a>
-                <!-- TikTok -->
-                <a href="https://www.tiktok.com/@afrizyy_?_r=1&_t=ZS-98e1z0Pwyhw" target="_blank" onclick="trackClick('TikTok')" 
-                   class="glass-card px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-slate-700/50 transition-all duration-300 hover:scale-105 click-pop shadow-lg border border-slate-400/30">
-                    <i class="fa-brands fa-tiktok text-2xl text-slate-200"></i>
-                    <span class="font-medium">TikTok</span>
-                </a>
-                <!-- YouTube -->
-                <a href="https://youtube.com/@aftarafrizy?si=RYF5lOU81Icfvy-I" target="_blank" onclick="trackClick('YouTube')" 
-                   class="glass-card px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-red-600/40 transition-all duration-300 hover:scale-105 click-pop shadow-lg border border-red-400/30">
-                    <i class="fa-brands fa-youtube text-2xl text-red-300"></i>
-                    <span class="font-medium">YouTube</span>
-                </a>
-            </div>
-            <!-- Informasi Kontak Teks -->
-            <div class="text-center mt-6 text-sm text-emerald-200 flex justify-center gap-6 flex-wrap">
-                <span><i class="fa-solid fa-phone mr-1"></i> 0887-4334-10208</span>
-                <span><i class="fa-solid fa-envelope mr-1"></i> aftarafrizy@gmail.com</span>
-            </div>
-        </section>
-
-        <!-- KEAHLIAN / SKILL DETAIL TKJ & PERKANTORAN -->
-        <section class="mb-16 scroll-hidden" data-scroll>
-            <h2 class="text-2xl font-bold text-center mb-8 text-emerald-100"><i class="fa-solid fa-screwdriver-wrench mr-2"></i>Keahlian & Kompetensi Detail</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Keahlian 1 -->
-                <div onclick="showDetail('Konfigurasi Jaringan & Mikrotik')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
-                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-network-wired"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Jaringan & Mikrotik</h3>
-                    <p class="text-emerald-100 text-sm">Routing, Switching, VLAN, Manajemen Bandwidth Hotspot, dan Keamanan Jaringan LAN/WAN.</p>
-                </div>
-
-                <!-- Keahlian 2 -->
-                <div onclick="showDetail('Troubleshooting & Perangkat Keras')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
-                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-computer"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Troubleshooting PC</h3>
-                    <p class="text-emerald-100 text-sm">Perakitan komputer, diagnosa kerusakan hardware, instalasi sistem operasi, dan perbaikan software.</p>
-                </div>
-
-                <!-- Keahlian 3 -->
-                <div onclick="showDetail('Administrasi Server')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
-                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-server"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Administrasi Server</h3>
-                    <p class="text-emerald-100 text-sm">Konfigurasi DHCP Server, DNS Server, Web Server, FTP, dan manajemen hak akses pengguna.</p>
-                </div>
-
-                <!-- Keahlian 4: Microsoft Word -->
-                <div onclick="showDetail('Microsoft Word (Dokumentasi Profesional)')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
-                    <div class="text-blue-300 text-3xl mb-3"><i class="fa-solid fa-file-word"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Microsoft Word</h3>
-                    <p class="text-emerald-100 text-sm">Penyusunan laporan teknis jaringan, dokumentasi topologi, pembuatan surat resmi, dan format dokumen rapi.</p>
-                </div>
-
-                <!-- Keahlian 5: Microsoft Excel -->
-                <div onclick="showDetail('Microsoft Excel (Analisis Data & Inventory)')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
-                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-file-excel"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Microsoft Excel</h3>
-                    <p class="text-emerald-100 text-sm">Pengelolaan data inventaris perangkat jaringan, rumus logika, tabel pivot, dan rekapitulasi data profesional.</p>
-                </div>
-
-                <!-- Keahlian 6 -->
-                    <div onclick="showDetail('Fiber Optic & Kabel UTP')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
-                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-ethernet"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Kabel & Fiber Optic</h3>
-                    <p class="text-emerald-100 text-sm">Crimping kabel UTP (Straight/Cross), instalasi konektor RJ45, serta pemahaman dasar penyambungan fiber optic.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="text-center text-emerald-200/80 text-sm py-6 border-t border-white/10 scroll-hidden" data-scroll>
-            <p>&copy; 2026 Afthar Afrizy. All Rights Reserved. | Tema Alam Hijau TKJ</p>
-        </footer>
-
-    </div>
-
-    <!-- MODAL POPUP UNTUK INTERAKSI KLIK INFORMASI -->
-    <div id="infoModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-        <div class="glass-card max-w-md w-full p-6 rounded-2xl text-center relative shadow-2xl border border-emerald-400/40 animate__animated animate__zoomIn">
-            <div id="modalIcon" class="text-emerald-300 text-4xl mb-3"><i class="fa-solid fa-circle-info"></i></div>
-            <h3 id="modalTitle" class="text-2xl font-bold mb-2 text-white">Judul Keahlian</h3>
-            <p id="modalDesc" class="text-emerald-100 text-sm mb-6">Deskripsi lengkap mengenai keahlian ini akan muncul di sini.</p>
-            <button onclick="closeModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-2 rounded-xl transition-all click-pop cursor-pointer">
-                Tutup
-            </button>
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-lg font-bold tracking-tight text-slate-900 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold">B</span>
+                <span>Bilal Fakhri</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#about" class="hover:text-slate-900 transition-colors">Tentang</a>
+                <a href="#education" class="hover:text-slate-900 transition-colors">Pendidikan</a>
+                <a href="#skills" class="hover:text-slate-900 transition-colors">Keahlian</a>
+                <a href="#projects" class="hover:text-slate-900 transition-colors">Proyek</a>
+                <a href="#contact" class="hover:text-slate-900 transition-colors">Kontak</a>
+            </nav>
+            <a href="#contact" class="px-5 py-2.5 rounded-full bg-slate-900 text-white text-xs font-semibold tracking-wide hover:bg-slate-800 transition-all shadow-sm">
+                Hubungi Saya
+            </a>
         </div>
-    </div>
+    </header>
 
-    <!-- SCRIPT JAVASCRIPT UNTUK ANIMASI & INTERAKSI -->
+    <main class="pt-28 pb-20 max-w-6xl mx-auto px-6 space-y-24">
+
+        <!-- Hero Section -->
+        <section class="min-h-[80vh] flex items-center fade-in-up">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel text-xs font-medium text-slate-700">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-900"></i>
+                        <span>Portofolio Digital</span>
+                    </div>
+                    <div class="space-y-2">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight">
+                            Bilal Fakhri Athallah
+                        </h1>
+                        <p class="text-base sm:text-lg font-semibold text-slate-500 tracking-wide">
+                            Student • Teknik Komputer Jaringan & Telekomunikasi
+                        </p>
+                    </div>
+                    <p class="text-slate-600 text-base leading-relaxed max-w-xl">
+                        Siswa SMK MEKANIK CIBINONG yang memiliki semangat belajar tinggi, menyukai dunia teknologi, dan terus mengembangkan kemampuan di bidang jaringan komputer serta telekomunikasi.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#projects" class="px-6 py-3.5 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-all shadow-md flex items-center gap-2">
+                            <span>Explore Portfolio</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 rounded-full glass-panel text-slate-800 text-sm font-medium hover:bg-white transition-all border border-white/80">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md aspect-[3/4] rounded-[20px] p-3 glass-panel shadow-xl">
+                        <div class="w-full h-full rounded-[16px] overflow-hidden relative group">
+                            <!-- Placeholder Image 1: Professional Woman Portrait -->
+                            <img src="bilal.jpeg" 
+                                 alt="Bilal Fakhri Athallah Placeholder" 
+                                 class="w-full h-full object-cover object-center grayscale contrast-125 group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Profile Section -->
+        <section class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-card p-6 rounded-[20px]">
+                    <div class="w-10 h-10 rounded-full bg-slate-900/5 flex items-center justify-center mb-4">
+                        <i data-lucide="user" class="w-5 h-5 text-slate-900"></i>
+                    </div>
+                    <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Nama</span>
+                    <h3 class="text-base font-semibold text-slate-900 mt-1">Bilal Fakhri Athallah</h3>
+                </div>
+                <div class="glass-card p-6 rounded-[20px]">
+                    <div class="w-10 h-10 rounded-full bg-slate-900/5 flex items-center justify-center mb-4">
+                        <i data-lucide="school" class="w-5 h-5 text-slate-900"></i>
+                    </div>
+                    <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Sekolah</span>
+                    <h3 class="text-base font-semibold text-slate-900 mt-1">SMK MEKANIK CIBINONG</h3>
+                </div>
+                <div class="glass-card p-6 rounded-[20px]">
+                    <div class="w-10 h-10 rounded-full bg-slate-900/5 flex items-center justify-center mb-4">
+                        <i data-lucide="laptop" class="w-5 h-5 text-slate-900"></i>
+                    </div>
+                    <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Jurusan</span>
+                    <h3 class="text-base font-semibold text-slate-900 mt-1">TKJT</h3>
+                </div>
+                <div class="glass-card p-6 rounded-[20px]">
+                    <div class="w-10 h-10 rounded-full bg-slate-900/5 flex items-center justify-center mb-4">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-slate-900"></i>
+                    </div>
+                    <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Alamat</span>
+                    <h3 class="text-base font-semibold text-slate-900 mt-1 text-xs leading-relaxed">GRIYA BOJONG BARU BLOCK GC NO.16</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="glass-panel p-8 sm:p-12 rounded-[20px]">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-4 flex justify-center">
+                    <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-[20px] overflow-hidden p-2 glass-card shadow-inner">
+                        <!-- Placeholder Image 2: Professional Woman Portrait (Square) -->
+                        <img src="bilal.jpeg" 
+                             alt="About Placeholder" 
+                             class="w-full h-full object-cover rounded-[16px] grayscale contrast-125">
+                    </div>
+                </div>
+                <div class="md:col-span-8 space-y-4">
+                    <div class="flex items-center gap-2 text-slate-500 font-medium text-xs tracking-wider uppercase">
+                        <i data-lucide="user-check" class="w-4 h-4 text-slate-900"></i>
+                        <span>Profil Singkat</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Tentang Saya</h2>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        Saya merupakan siswa SMK MEKANIK CIBINONG yang memiliki ketertarikan dalam bidang teknologi informasi, khususnya jaringan komputer dan telekomunikasi. Saya memiliki semangat belajar yang tinggi, disiplin, bertanggung jawab, dan mudah beradaptasi dengan lingkungan baru.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="space-y-8">
+            <div class="flex items-center gap-2 text-slate-500 font-medium text-xs tracking-wider uppercase">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-slate-900"></i>
+                <span>Riwayat Akademis</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Pendidikan</h2>
+
+            <div class="relative pl-6 sm:pl-8 border-l-2 border-slate-300 space-y-10 ml-2">
+                <!-- MIS LILMUBTADIIN -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-4 border-slate-100 group-hover:scale-125 transition-transform"></div>
+                    <div class="glass-card p-6 rounded-[20px]">
+                        <h3 class="text-lg font-bold text-slate-900">MIS LILMUBTADIIN</h3>
+                        <p class="text-xs text-slate-500 mt-1">Pendidikan Dasar</p>
+                    </div>
+                </div>
+                <!-- MTSN 3 BOGOR -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-4 border-slate-100 group-hover:scale-125 transition-transform"></div>
+                    <div class="glass-card p-6 rounded-[20px]">
+                        <h3 class="text-lg font-bold text-slate-900">MTSN 3 BOGOR</h3>
+                        <p class="text-xs text-slate-500 mt-1">Pendidikan Menengah Pertama</p>
+                    </div>
+                </div>
+                <!-- SMK MEKANIK CIBINONG -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-4 border-slate-100 group-hover:scale-125 transition-transform"></div>
+                    <div class="glass-card p-6 rounded-[20px] border-slate-400">
+                        <h3 class="text-lg font-bold text-slate-900">SMK MEKANIK CIBINONG</h3>
+                        <p class="text-sm font-semibold text-slate-700 mt-1">Teknik Komputer Jaringan & Telekomunikasi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="space-y-8">
+            <div class="flex items-center gap-2 text-slate-500 font-medium text-xs tracking-wider uppercase">
+                <i data-lucide="cpu" class="w-4 h-4 text-slate-900"></i>
+                <span>Kemampuan Utama</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Skills & Kompetensi</h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="glass-card p-6 rounded-[20px] flex flex-col items-center text-center">
+                    <div class="relative w-24 h-24 mb-4">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="circle-progress" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-900">85%</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-slate-900">Microsoft Office</h3>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="glass-card p-6 rounded-[20px] flex flex-col items-center text-center">
+                    <div class="relative w-24 h-24 mb-4">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="circle-progress" stroke-dasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-900">80%</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-slate-900">Cisco Packet Tracer</h3>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="glass-card p-6 rounded-[20px] flex flex-col items-center text-center">
+                    <div class="relative w-24 h-24 mb-4">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="circle-progress" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-900">75%</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-slate-900">HTML Dasar</h3>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="glass-card p-6 rounded-[20px] flex flex-col items-center text-center">
+                    <div class="relative w-24 h-24 mb-4">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="circle-progress" stroke-dasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <span class="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-900">90%</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-slate-900">Communication</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Projects Section (2x2 Cards) -->
+        <section id="projects" class="space-y-8">
+            <div class="flex items-center gap-2 text-slate-500 font-medium text-xs tracking-wider uppercase">
+                <i data-lucide="folder-git-2" class="w-4 h-4 text-slate-900"></i>
+                <span>Portofolio Karya</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">My Projects</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Project 1 -->
+                <div class="glass-card p-8 rounded-[20px] space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center">
+                            <i data-lucide="network" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Konfigurasi Cisco</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Simulasi dan perancangan topologi jaringan skala menengah hingga besar menggunakan Cisco Packet Tracer.
+                        </p>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 text-xs font-bold text-slate-900 hover:gap-3 transition-all pt-4">
+                        <span>View Project</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card p-8 rounded-[20px] space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center">
+                            <i data-lucide="cable" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Instalasi LAN</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Pemasangan dan pengujian kabel jaringan UTP, crimping RJ45, serta setting Local Area Network secara fisik.
+                        </p>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 text-xs font-bold text-slate-900 hover:gap-3 transition-all pt-4">
+                        <span>View Project</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card p-8 rounded-[20px] space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center">
+                            <i data-lucide="code" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Website HTML</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Pengembangan tampilan antarmuka web statis yang bersih, rapi, dan responsif menggunakan struktur HTML5.
+                        </p>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 text-xs font-bold text-slate-900 hover:gap-3 transition-all pt-4">
+                        <span>View Project</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass-card p-8 rounded-[20px] space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center">
+                            <i data-lucide="server" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Simulasi DHCP</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Konfigurasi server DHCP untuk pengalokasian IP Address secara otomatis kepada beberapa client.
+                        </p>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 text-xs font-bold text-slate-900 hover:gap-3 transition-all pt-4">
+                        <span>View Project</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies Section -->
+        <section class="space-y-8">
+            <div class="flex items-center gap-2 text-slate-500 font-medium text-xs tracking-wider uppercase">
+                <i data-lucide="smile" class="w-4 h-4 text-slate-900"></i>
+                <span>Aktivitas Favorit</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Hobbies</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="glass-card p-6 rounded-[20px] flex items-center gap-4">
+                    <div class="text-3xl">🍿</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Menonton Film</h3>
+                        <p class="text-xs text-slate-500">Mencari inspirasi dan hiburan melalui visual story</p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-[20px] flex items-center gap-4">
+                    <div class="text-3xl">🚗</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Jalan-Jalan</h3>
+                        <p class="text-xs text-slate-500">Mengeksplorasi tempat baru dan menyegarkan pikiran</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="space-y-8">
+            <div class="flex items-center gap-2 text-slate-500 font-medium text-xs tracking-wider uppercase">
+                <i data-lucide="send" class="w-4 h-4 text-slate-900"></i>
+                <span>Komunikasi</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Contact Me</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Email -->
+                <a href="mailto:fakhri.bielal@gmail.com" class="glass-card p-6 rounded-[20px] space-y-3 block">
+                    <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Email</span>
+                        <p class="text-sm font-semibold text-slate-900 truncate">fakhri.bielal@gmail.com</p>
+                    </div>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/6285778719787" target="_blank" class="glass-card p-6 rounded-[20px] space-y-3 block">
+                    <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">WhatsApp</span>
+                        <p class="text-sm font-semibold text-slate-900">085778719787</p>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/syroooo_" target="_blank" class="glass-card p-6 rounded-[20px] space-y-3 block">
+                    <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Instagram</span>
+                        <p class="text-sm font-semibold text-slate-900">@syroooo_</p>
+                    </div>
+                </a>
+
+                <!-- Address -->
+                <div class="glass-card p-6 rounded-[20px] space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Alamat</span>
+                        <p class="text-xs font-semibold text-slate-900 leading-relaxed">GRIYA BOJONG BARU BLOCK GC NO.16</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-300/60 bg-white/30 backdrop-blur-md py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center space-y-2">
+            <p class="text-xs font-medium text-slate-500">©️ 2026 Bilal Fakhri Athallah</p>
+            <p class="text-xs text-slate-400">SMK MEKANIK CIBINONG</p>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
     <script>
-        // 1. Fungsi Ganti Foto Profil Interaktif
-        const photoList = [
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
-        ];
-        let currentPhotoIndex = 0;
-
-        function changePhoto() {
-            currentPhotoIndex = (currentPhotoIndex + 1) % photoList.length;
-            const profilePic = document.getElementById('profile-pic');
-            profilePic.style.opacity = 0;
-            setTimeout(() => {
-                profilePic.src = photoList[currentPhotoIndex];
-                profilePic.style.opacity = 1;
-            }, 200);
-            profilePic.style.transition = 'opacity 0.3s ease';
-        }
-
-        // 2. Fungsi Animasi Scroll (Timbul saat turun, Hilang saat naik kembali ke atas)
-        document.addEventListener("DOMContentLoaded", function () {
-            const scrollElements = document.querySelectorAll("[data-scroll]");
-
-            const elementInView = (el, dividend = 1) => {
-                const elementTop = el.getBoundingClientRect().top;
-                return (
-                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-                );
-            };
-
-            const elementOutofView = (el) => {
-                const elementTop = el.getBoundingClientRect().top;
-                return (
-                    elementTop > (window.innerHeight || document.documentElement.clientHeight)
-                );
-            };
-
-            const displayScrollElement = (element) => {
-                element.classList.add("scroll-visible");
-            };
-
-            const hideScrollElement = (element) => {
-                element.classList.remove("scroll-visible");
-            };
-
-            const handleScrollAnimation = () => {
-                scrollElements.forEach((el) => {
-                    if (elementInView(el, 1.15)) {
-                        displayScrollElement(el);
-                    } else if (elementOutofView(el)) {
-                        hideScrollElement(el);
-                    }
-                });
-            };
-
-            window.addEventListener("scroll", () => {
-                handleScrollAnimation();
-            });
-
-            // Jalankan sekali saat load awal
-            handleScrollAnimation();
-        });
-
-        // 3. Fungsi Interaktif Klik Informasi (Menampilkan Modal Detail)
-        function showDetail(skillName) {
-            const modal = document.getElementById('infoModal');
-            const title = document.getElementById('modalTitle');
-            const desc = document.getElementById('modalDesc');
-
-            title.innerText = skillName;
-            desc.innerText = "Keahlian ini dikuasai dengan standar operasional tinggi di bidang TKJ, memastikan performa kerja yang cepat, akurat, dan solutif untuk berbagai kebutuhan teknis maupun administratif.";
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('infoModal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
-
-        // 4. Efek Klik Interaktif pada Media Sosial
-        function trackClick(platform) {
-            console.log("Pengguna mengklik tautan: " + platform);
-        }
+        lucide.createIcons();
     </script>
 </body>
 </html>
