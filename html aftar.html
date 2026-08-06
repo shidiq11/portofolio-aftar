@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Afthar Afrizy | TKJ Expert</title>
+    <!-- Tailwind CSS untuk styling modern -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css untuk animasi tambahan -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Latar Belakang Alam dengan Overlay Hijau Transparan */
+        .nature-bg {
+            background: linear-gradient(rgba(20, 83, 45, 0.75), rgba(6, 78, 59, 0.85)), 
+                        url('https://images.unsplash.com/photo-1511497584788-876761142212?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Border Alam pada Foto Profil */
+        .nature-border {
+            border: 6px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+            position: relative;
+        }
+
+        /* Efek Transparansi Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* Animasi Scroll Custom */
+        .scroll-hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efek Klik Interaktif pada Informasi */
+        .click-pop:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease;
+        }
+
+        /* Animasi Daun Jatuh Dekoratif */
+        @keyframes floatLeaf {
+            0% { transform: translateY(-10px) rotate(0deg); }
+            50% { transform: translateY(15px) rotate(180deg); }
+            100% { transform: translateY(-10px) rotate(360deg); }
+        }
+        .leaf-float {
+            animation: floatLeaf 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="nature-bg text-white min-h-screen">
+
+    <!-- Elemen Alam Dekoratif (Daun/Partikel Melayang) -->
+    <div class="fixed top-10 left-10 text-emerald-300/30 text-4xl leaf-float pointer-events-none z-0"><i class="fa-solid fa-leaf"></i></div>
+    <div class="fixed bottom-20 right-12 text-emerald-200/25 text-5xl leaf-float pointer-events-none z-0" style="animation-delay: 2s;"><i class="fa-solid fa-seedling"></i></div>
+    <div class="fixed top-1/2 right-10 text-emerald-400/20 text-3xl leaf-float pointer-events-none z-0" style="animation-delay: 4s;"><i class="fa-solid fa-tree"></i></div>
+
+    <div class="container mx-auto px-6 py-12 relative z-10 max-w-5xl">
+
+        <!-- HEADER / PERKENALAN UTAMA -->
+        <header class="text-center mb-16 scroll-hidden" data-scroll>
+            <div class="relative inline-block mb-6 group">
+                <!-- Foto Profil dengan Border Alam -->
+                <img id="profile-pic" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" 
+                     alt="Afthar Afrizy" class="w-44 h-44 rounded-full object-cover nature-border mx-auto transition-transform duration-500 group-hover:scale-105">
+                
+                <!-- Tombol Mengganti Foto -->
+                <button onclick="changePhoto()" class="absolute bottom-2 right-2 bg-emerald-600 hover:bg-emerald-500 text-white p-3 rounded-full shadow-lg transition-transform hover:scale-110 click-pop cursor-pointer" title="Ganti Foto">
+                    <i class="fa-solid fa-camera"></i>
+                </button>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold tracking-wide text-white drop-shadow-md">Afthar Afrizy</h1>
+            <p class="text-emerald-200 font-semibold text-lg mt-2 tracking-wider">Teknik Komputer & Jaringan (TKJ) Specialist</p>
+            
+            <!-- Deskripsi Singkat Perkenalan Diri TKJ -->
+            <div class="glass-card max-w-2xl mx-auto mt-6 p-6 rounded-2xl shadow-xl text-emerald-50 text-sm md:text-base leading-relaxed">
+                Halo! Saya adalah seorang ahli Teknik Komputer dan Jaringan (TKJ) yang berdedikasi tinggi dalam merancang, mengonfigurasi, serta mengamankan infrastruktur jaringan komputer. Memiliki pemahaman mendalam tentang administrasi server, troubleshooting hardware & software, mikrotik, hingga manajemen data profesional menggunakan Microsoft Word dan Excel.
+            </div>
+        </header>
+
+        <!-- MEDIA SOSIAL & KONTAK INTERAKTIF -->
+        <section class="mb-16 scroll-hidden" data-scroll>
+            <h2 class="text-2xl font-bold text-center mb-6 text-emerald-100"><i class="fa-solid fa-share-nodes mr-2"></i>Hubungi & Media Sosial</h2>
+<div class="flex flex-wrap justify-center gap-4">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/62887433410208" target="_blank" onclick="trackClick('WhatsApp')" 
+                   class="glass-card px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-emerald-600/40 transition-all duration-300 hover:scale-105 click-pop shadow-lg border border-emerald-400/30">
+                    <i class="fa-brands fa-whatsapp text-2xl text-emerald-300"></i>
+                    <span class="font-medium">WhatsApp</span>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/afrizyy?igsh=Z25pcDhvNHBvNzZ0" target="_blank" onclick="trackClick('Instagram')" 
+                   class="glass-card px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-pink-600/40 transition-all duration-300 hover:scale-105 click-pop shadow-lg border border-pink-400/30">
+                    <i class="fa-brands fa-instagram text-2xl text-pink-300"></i>
+                    <span class="font-medium">Instagram</span>
+                </a>
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@afrizyy_?_r=1&_t=ZS-98e1z0Pwyhw" target="_blank" onclick="trackClick('TikTok')" 
+                   class="glass-card px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-slate-700/50 transition-all duration-300 hover:scale-105 click-pop shadow-lg border border-slate-400/30">
+                    <i class="fa-brands fa-tiktok text-2xl text-slate-200"></i>
+                    <span class="font-medium">TikTok</span>
+                </a>
+                <!-- YouTube -->
+                <a href="https://youtube.com/@aftarafrizy?si=RYF5lOU81Icfvy-I" target="_blank" onclick="trackClick('YouTube')" 
+                   class="glass-card px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-red-600/40 transition-all duration-300 hover:scale-105 click-pop shadow-lg border border-red-400/30">
+                    <i class="fa-brands fa-youtube text-2xl text-red-300"></i>
+                    <span class="font-medium">YouTube</span>
+                </a>
+            </div>
+            <!-- Informasi Kontak Teks -->
+            <div class="text-center mt-6 text-sm text-emerald-200 flex justify-center gap-6 flex-wrap">
+                <span><i class="fa-solid fa-phone mr-1"></i> 0887-4334-10208</span>
+                <span><i class="fa-solid fa-envelope mr-1"></i> aftarafrizy@gmail.com</span>
+            </div>
+        </section>
+
+        <!-- KEAHLIAN / SKILL DETAIL TKJ & PERKANTORAN -->
+        <section class="mb-16 scroll-hidden" data-scroll>
+            <h2 class="text-2xl font-bold text-center mb-8 text-emerald-100"><i class="fa-solid fa-screwdriver-wrench mr-2"></i>Keahlian & Kompetensi Detail</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Keahlian 1 -->
+                <div onclick="showDetail('Konfigurasi Jaringan & Mikrotik')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
+                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Jaringan & Mikrotik</h3>
+                    <p class="text-emerald-100 text-sm">Routing, Switching, VLAN, Manajemen Bandwidth Hotspot, dan Keamanan Jaringan LAN/WAN.</p>
+                </div>
+
+                <!-- Keahlian 2 -->
+                <div onclick="showDetail('Troubleshooting & Perangkat Keras')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
+                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-computer"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Troubleshooting PC</h3>
+                    <p class="text-emerald-100 text-sm">Perakitan komputer, diagnosa kerusakan hardware, instalasi sistem operasi, dan perbaikan software.</p>
+                </div>
+
+                <!-- Keahlian 3 -->
+                <div onclick="showDetail('Administrasi Server')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
+                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-server"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Administrasi Server</h3>
+                    <p class="text-emerald-100 text-sm">Konfigurasi DHCP Server, DNS Server, Web Server, FTP, dan manajemen hak akses pengguna.</p>
+                </div>
+
+                <!-- Keahlian 4: Microsoft Word -->
+                <div onclick="showDetail('Microsoft Word (Dokumentasi Profesional)')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
+                    <div class="text-blue-300 text-3xl mb-3"><i class="fa-solid fa-file-word"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Microsoft Word</h3>
+                    <p class="text-emerald-100 text-sm">Penyusunan laporan teknis jaringan, dokumentasi topologi, pembuatan surat resmi, dan format dokumen rapi.</p>
+                </div>
+
+                <!-- Keahlian 5: Microsoft Excel -->
+                <div onclick="showDetail('Microsoft Excel (Analisis Data & Inventory)')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
+                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-file-excel"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Microsoft Excel</h3>
+                    <p class="text-emerald-100 text-sm">Pengelolaan data inventaris perangkat jaringan, rumus logika, tabel pivot, dan rekapitulasi data profesional.</p>
+                </div>
+
+                <!-- Keahlian 6 -->
+                    <div onclick="showDetail('Fiber Optic & Kabel UTP')" class="glass-card p-6 rounded-2xl cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105 click-pop shadow-xl">
+                    <div class="text-emerald-300 text-3xl mb-3"><i class="fa-solid fa-ethernet"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Kabel & Fiber Optic</h3>
+                    <p class="text-emerald-100 text-sm">Crimping kabel UTP (Straight/Cross), instalasi konektor RJ45, serta pemahaman dasar penyambungan fiber optic.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-emerald-200/80 text-sm py-6 border-t border-white/10 scroll-hidden" data-scroll>
+            <p>&copy; 2026 Afthar Afrizy. All Rights Reserved. | Tema Alam Hijau TKJ</p>
+        </footer>
+
+    </div>
+
+    <!-- MODAL POPUP UNTUK INTERAKSI KLIK INFORMASI -->
+    <div id="infoModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-2xl text-center relative shadow-2xl border border-emerald-400/40 animate__animated animate__zoomIn">
+            <div id="modalIcon" class="text-emerald-300 text-4xl mb-3"><i class="fa-solid fa-circle-info"></i></div>
+            <h3 id="modalTitle" class="text-2xl font-bold mb-2 text-white">Judul Keahlian</h3>
+            <p id="modalDesc" class="text-emerald-100 text-sm mb-6">Deskripsi lengkap mengenai keahlian ini akan muncul di sini.</p>
+            <button onclick="closeModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-2 rounded-xl transition-all click-pop cursor-pointer">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- SCRIPT JAVASCRIPT UNTUK ANIMASI & INTERAKSI -->
+    <script>
+        // 1. Fungsi Ganti Foto Profil Interaktif
+        const photoList = [
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+        ];
+        let currentPhotoIndex = 0;
+
+        function changePhoto() {
+            currentPhotoIndex = (currentPhotoIndex + 1) % photoList.length;
+            const profilePic = document.getElementById('profile-pic');
+            profilePic.style.opacity = 0;
+            setTimeout(() => {
+                profilePic.src = photoList[currentPhotoIndex];
+                profilePic.style.opacity = 1;
+            }, 200);
+            profilePic.style.transition = 'opacity 0.3s ease';
+        }
+
+        // 2. Fungsi Animasi Scroll (Timbul saat turun, Hilang saat naik kembali ke atas)
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollElements = document.querySelectorAll("[data-scroll]");
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+
+            const elementOutofView = (el) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop > (window.innerHeight || document.documentElement.clientHeight)
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add("scroll-visible");
+            };
+
+            const hideScrollElement = (element) => {
+                element.classList.remove("scroll-visible");
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.15)) {
+                        displayScrollElement(el);
+                    } else if (elementOutofView(el)) {
+                        hideScrollElement(el);
+                    }
+                });
+            };
+
+            window.addEventListener("scroll", () => {
+                handleScrollAnimation();
+            });
+
+            // Jalankan sekali saat load awal
+            handleScrollAnimation();
+        });
+
+        // 3. Fungsi Interaktif Klik Informasi (Menampilkan Modal Detail)
+        function showDetail(skillName) {
+            const modal = document.getElementById('infoModal');
+            const title = document.getElementById('modalTitle');
+            const desc = document.getElementById('modalDesc');
+
+            title.innerText = skillName;
+            desc.innerText = "Keahlian ini dikuasai dengan standar operasional tinggi di bidang TKJ, memastikan performa kerja yang cepat, akurat, dan solutif untuk berbagai kebutuhan teknis maupun administratif.";
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('infoModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // 4. Efek Klik Interaktif pada Media Sosial
+        function trackClick(platform) {
+            console.log("Pengguna mengklik tautan: " + platform);
+        }
+    </script>
+</body>
+</html>
